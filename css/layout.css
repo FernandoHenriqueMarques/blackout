@@ -58,11 +58,74 @@
 #hero {
   min-height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  padding-top: calc(var(--header-height) + 2rem);
+}
+
+#hero .container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+}
+
+.hero-video {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+  order: -1;
+}
+
+.hero-video video {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  filter: contrast(1.05) saturate(0.95);
 }
 
 #hero h1 {
-  max-width: 700px;
+  max-width: 800px;
+  text-align: center;
+  margin: 0 auto;
+  font-size: 3.5rem;
+  line-height: 1.1;
+  font-weight: 700;
+}
+
+.hero-cta {
+  display: flex;
+  gap: var(--space-xl);
+  justify-content: center;
+  align-items: center;
+}
+
+.cta-link {
+  color: var(--color-white);
+  text-decoration: none;
+  font-weight: var(--font-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: var(--font-size-md);
+  transition: all var(--transition-base);
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--color-white);
+  padding: var(--space-sm) var(--space-lg);
+}
+
+.cta-link svg {
+  flex-shrink: 0;
+}
+
+.cta-link:hover {
+  color: var(--color-white);
+  background-color: var(--color-white);
+}
+
+.cta-link:hover svg {
+  color: var(--color-black);
 }
 
 /* ===============================
@@ -147,6 +210,40 @@
    RESPONSIVO
 ================================ */
 
+@media (max-width: 767px) {
+  #hero {
+    padding-top: calc(var(--header-height) + 1rem);
+  }
+  
+  #hero .container {
+    padding: 0;
+  }
+  
+  .hero-video {
+    margin: 0 -16px;
+    border-radius: 0;
+  }
+  
+  .hero-video video {
+    border-radius: 0;
+  }
+  
+  #hero h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+    max-width: 100%;
+  }
+  
+  .hero-cta {
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  
+  .cta-link {
+    font-size: var(--font-size-sm);
+  }
+}
+
 @media (min-width: 768px) {
 
   .produtos-grid,
@@ -166,6 +263,10 @@
   .footer-content {
     flex-direction: row;
     justify-content: space-between;
+  }
+
+  #hero h1 {
+    font-size: 2.8rem;
   }
 }
 

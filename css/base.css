@@ -39,6 +39,28 @@ h1 {
 
 h2 {
   font-size: var(--font-size-xl);
+  position: relative;
+  text-align: center;
+  margin: 0 0 var(--space-xl);
+  padding: var(--space-lg) 0;
+}
+
+h2::before,
+h2::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--color-primary), transparent);
+}
+
+h2::before {
+  left: calc(50% - 140px);
+}
+
+h2::after {
+  right: calc(50% - 140px);
 }
 
 h3 {
@@ -120,6 +142,25 @@ button {
 section {
   padding-top: var(--space-xl);
   padding-bottom: var(--space-xl);
+}
+
+/* ===============================
+   RESPONSIVO
+================================ */
+
+@media (max-width: 767px) {
+  h2::before,
+  h2::after {
+    width: 40px;
+  }
+  
+  h2::before {
+    left: calc(50% - 80px);
+  }
+  
+  h2::after {
+    right: calc(50% - 80px);
+  }
 }
 
 /* ===============================

@@ -99,7 +99,10 @@
 ================================ */
 
 .depoimento {
-  flex: 0 0 calc((100% - (var(--space-md) * 2)) / 3);
+  --depoimento-card-width: 340px;
+  flex: 0 0 var(--depoimento-card-width);
+  width: var(--depoimento-card-width);
+  max-width: var(--depoimento-card-width);
   min-width: 0;
   background: linear-gradient(135deg, var(--color-gray-dark), var(--color-gray));
   padding: var(--space-lg);
@@ -110,13 +113,13 @@
 
 @media (max-width: 1023px) {
   .depoimento {
-    flex-basis: calc((100% - var(--space-md)) / 2);
+    --depoimento-card-width: 320px;
   }
 }
 
 @media (max-width: 767px) {
   .depoimento {
-    flex-basis: 85%;
+    --depoimento-card-width: min(85vw, 320px);
   }
 }
 
@@ -126,6 +129,9 @@
   line-height: 1.6;
   font-style: italic;
   position: relative;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .depoimento p::before {

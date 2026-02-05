@@ -192,11 +192,14 @@
    DEPOIMENTOS
 ================================ */
 
+.depoimentos-carousel {
+  overflow: hidden;
+}
+
 .depoimentos-lista {
   display: flex;
   gap: var(--space-md);
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
+  width: max-content;
 }
 
 /* ===============================

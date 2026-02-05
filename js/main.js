@@ -1,21 +1,22 @@
 // ===============================
-// CARROSSEL CONTÍNUO DE CLIENTES
+// CARROSSEIS CONTÍNUOS
 // ===============================
 
-const carousel = document.querySelector('.clientes-carousel');
-const track = document.querySelector('.clientes-carousel-track');
+function initInfiniteCarousel({ viewportSelector, trackSelector, speed }) {
+  const viewport = document.querySelector(viewportSelector);
+  const track = document.querySelector(trackSelector);
 
-if (carousel && track) {
-  // Duplica os logos para efeito infinito
+  if (!viewport || !track) {
+    return;
+  }
+
   track.innerHTML += track.innerHTML;
 
   let position = 0;
-  const speed = 1.2; // ajuste fino da velocidade
 
   function animateCarousel() {
     position -= speed;
 
-    // Quando metade do conteúdo passar, reseta suavemente
     if (Math.abs(position) >= track.scrollWidth / 2) {
       position = 0;
     }
@@ -26,6 +27,18 @@ if (carousel && track) {
 
   animateCarousel();
 }
+
+initInfiniteCarousel({
+  viewportSelector: '.clientes-carousel',
+  trackSelector: '.clientes-carousel-track',
+  speed: 1.2
+});
+
+initInfiniteCarousel({
+  viewportSelector: '.depoimentos-carousel',
+  trackSelector: '.depoimentos-lista',
+  speed: 0.45
+});
 
 // ===============================
 // WHATSAPP FLUTUANTE

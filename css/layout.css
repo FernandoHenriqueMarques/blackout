@@ -160,6 +160,14 @@
    SOBRE NÓS
 ================================ */
 
+.sobre-wrapper {
+  width: 100%;
+}
+
+.sobre-wrapper h2 {
+  margin-bottom: var(--space-lg);
+}
+
 .sobre-content {
   display: flex;
   flex-direction: column;
@@ -168,9 +176,16 @@
 
 .lojas {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   gap: var(--space-lg);
   margin-top: var(--space-xl);
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.loja {
+  flex: 1 0 320px;
+  max-width: 480px;
 }
 
 /* ===============================
@@ -256,8 +271,12 @@
     align-items: center;
   }
 
-  .lojas {
-    flex-direction: row;
+  .sobre-texto {
+    order: 1;
+  }
+
+  .sobre-imagem {
+    order: 2;
   }
 
   .footer-content {

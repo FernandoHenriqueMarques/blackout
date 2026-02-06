@@ -3,7 +3,12 @@
 ================================ */
 
 .menu-toggle {
-  font-size: 1.5rem;
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
   line-height: 1;
 }
 

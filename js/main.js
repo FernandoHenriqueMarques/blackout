@@ -13,17 +13,120 @@ function initInfiniteCarousel({ viewportSelector, trackSelector, speed }) {
   track.innerHTML += track.innerHTML;
 
   let position = 0;
+  let isDragging = false;
+  let startX = 0;
+  let startPosition = 0;
 
-  function animateCarousel() {
-    position -= speed;
+  function normalizePosition() {
+    const loopWidth = track.scrollWidth / 2;
 
-    if (Math.abs(position) >= track.scrollWidth / 2) {
-      position = 0;
+    if (!loopWidth) {
+      return;
     }
 
+    while (position <= -loopWidth) {
+      position += loopWidth;
+    }
+
+    while (position > 0) {
+      position -= loopWidth;
+    }
+  }
+
+  function applyTransform() {
     track.style.transform = `translateX(${position}px)`;
+  }
+
+  function animateCarousel() {
+    if (!isDragging) {
+      position -= speed;
+      normalizePosition();
+      applyTransform();
+    }
+
     requestAnimationFrame(animateCarousel);
   }
+
+  function startDragging(clientX) {
+    isDragging = true;
+    startX = clientX;
+    startPosition = position;
+    viewport.classList.add('is-dragging');
+  }
+
+  function dragTo(clientX) {
+    if (!isDragging) {
+      return;
+    }
+
+    const deltaX = clientX - startX;
+    position = startPosition + deltaX;
+    normalizePosition();
+    applyTransform();
+  }
+
+  function stopDragging() {
+    if (!isDragging) {
+      return;
+    }
+
+    isDragging = false;
+    viewport.classList.remove('is-dragging');
+  }
+
+  function onPointerDown(event) {
+    startDragging(event.clientX);
+
+    if (viewport.setPointerCapture) {
+      viewport.setPointerCapture(event.pointerId);
+    }
+  }
+
+  function onPointerMove(event) {
+    dragTo(event.clientX);
+  }
+
+  function onPointerUp(event) {
+    stopDragging();
+
+    if (viewport.releasePointerCapture) {
+      viewport.releasePointerCapture(event.pointerId);
+    }
+  }
+
+  function onTouchStart(event) {
+    const firstTouch = event.touches[0];
+
+    if (!firstTouch) {
+      return;
+    }
+
+    startDragging(firstTouch.clientX);
+  }
+
+  function onTouchMove(event) {
+    const firstTouch = event.touches[0];
+
+    if (!firstTouch) {
+      return;
+    }
+
+    dragTo(firstTouch.clientX);
+
+    if (isDragging) {
+      event.preventDefault();
+    }
+  }
+
+  viewport.addEventListener('pointerdown', onPointerDown);
+  viewport.addEventListener('pointermove', onPointerMove);
+  viewport.addEventListener('pointerup', onPointerUp);
+  viewport.addEventListener('pointercancel', stopDragging);
+
+  viewport.addEventListener('touchstart', onTouchStart, { passive: true });
+  viewport.addEventListener('touchmove', onTouchMove, { passive: false });
+  viewport.addEventListener('touchend', stopDragging);
+  viewport.addEventListener('touchcancel', stopDragging);
 
   animateCarousel();
 }

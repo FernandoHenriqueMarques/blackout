@@ -51,8 +51,8 @@ h2 {
   font-size: var(--font-size-xl);
   position: relative;
   text-align: center;
-  margin: 0 0 var(--space-xl);
-  padding: var(--space-lg) 0;
+  margin: 0 0 var(--space-lg);
+  padding: var(--space-sm) 0;
 }
 
 h2::before,
@@ -150,8 +150,8 @@ button {
 ================================ */
 
 section {
-  padding-top: var(--space-xl);
-  padding-bottom: var(--space-xl);
+  padding-top: var(--space-lg);
+  padding-bottom: var(--space-lg);
 }
 
 /* ===============================

@@ -154,6 +154,13 @@
 .clientes-carousel {
   overflow: hidden;
   white-space: nowrap;
+  touch-action: pan-y;
+  cursor: grab;
+  user-select: none;
+}
+
+.clientes-carousel.is-dragging {
+  cursor: grabbing;
 }
 
 /* ===============================
@@ -194,6 +201,13 @@
 
 .depoimentos-carousel {
   overflow: hidden;
+  touch-action: pan-y;
+  cursor: grab;
+  user-select: none;
+}
+
+.depoimentos-carousel.is-dragging {
+  cursor: grabbing;
 }
 
 .depoimentos-lista {

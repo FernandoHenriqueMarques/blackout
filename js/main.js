@@ -13,17 +13,77 @@ function initInfiniteCarousel({ viewportSelector, trackSelector, speed }) {
   track.innerHTML += track.innerHTML;
 
   let position = 0;
+  let isDragging = false;
+  let startX = 0;
+  let startPosition = 0;
 
-  function animateCarousel() {
-    position -= speed;
+  function normalizePosition() {
+    const loopWidth = track.scrollWidth / 2;
 
-    if (Math.abs(position) >= track.scrollWidth / 2) {
-      position = 0;
+    if (!loopWidth) {
+      return;
     }
 
+    while (position <= -loopWidth) {
+      position += loopWidth;
+    }
+
+    while (position > 0) {
+      position -= loopWidth;
+    }
+  }
+
+  function applyTransform() {
     track.style.transform = `translateX(${position}px)`;
+  }
+
+  function animateCarousel() {
+    if (!isDragging) {
+      position -= speed;
+      normalizePosition();
+      applyTransform();
+    }
+
     requestAnimationFrame(animateCarousel);
   }
+
+  function onPointerDown(event) {
+    isDragging = true;
+    startX = event.clientX;
+    startPosition = position;
+    viewport.classList.add('is-dragging');
+    viewport.setPointerCapture(event.pointerId);
+  }
+
+  function onPointerMove(event) {
+    if (!isDragging) {
+      return;
+    }
+
+    const deltaX = event.clientX - startX;
+    position = startPosition + deltaX;
+    normalizePosition();
+    applyTransform();
+  }
+
+  function stopDragging(event) {
+    if (!isDragging) {
+      return;
+    }
+
+    isDragging = false;
+    viewport.classList.remove('is-dragging');
+
+    if (event) {
+      viewport.releasePointerCapture(event.pointerId);
+    }
+  }
+
+  viewport.addEventListener('pointerdown', onPointerDown);
+  viewport.addEventListener('pointermove', onPointerMove);
+  viewport.addEventListener('pointerup', stopDragging);
+  viewport.addEventListener('pointercancel', stopDragging);
+  viewport.addEventListener('pointerleave', stopDragging);
 
   animateCarousel();
 }

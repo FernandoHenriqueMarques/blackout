@@ -231,7 +231,6 @@
   <noscript>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700&display=swap">
   </noscript>
-  <link rel="preload" as="image" href="assets/images/sobre/sobre.jpg" fetchpriority="high">
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/layout.css">
@@ -249,6 +248,7 @@
       <img src="assets/images/logo/logo-blackout.png" alt="Blackout Cortinas" class="logo" width="1024" height="173" fetchpriority="high" decoding="async">
 
       <nav id="menu">
+        <button class="menu-close" aria-label="Fechar menu">✕</button>
         <ul>
           <li><a href="#hero">Início</a></li>
           <li><a href="#produtos">Produtos</a></li>
@@ -259,7 +259,7 @@
         </ul>
       </nav>
 
-      <button class="menu-toggle" aria-label="Abrir menu">
+      <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
         ☰
       </button>
     </div>
@@ -269,7 +269,7 @@
   <section id="hero">
     <div class="container">
       <div class="hero-video">
-        <video muted loop playsinline preload="none" poster="assets/images/sobre/sobre.jpg" aria-label="Vídeo de ambientes Blackout">
+        <video muted loop playsinline preload="none" aria-label="Vídeo de ambientes Blackout">
           <source data-src="assets/images/hero/video.mp4" type="video/mp4">
           Seu navegador não suporta vídeo.
         </video>

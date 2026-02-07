@@ -45,6 +45,10 @@
   letter-spacing: 0.04em;
 }
 
+.menu-close {
+  display: none;
+}
+
 /* ===============================
    HERO
 ================================ */
@@ -271,6 +275,20 @@
     justify-content: center;
     z-index: var(--z-menu);
     margin-left: 0;
+  }
+
+  .menu-close {
+    display: inline-flex;
+    position: absolute;
+    top: var(--space-md);
+    right: var(--space-md);
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    line-height: 1;
+    color: var(--color-white);
   }
 
   #menu ul {

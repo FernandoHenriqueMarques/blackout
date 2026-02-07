@@ -34,7 +34,7 @@ function initDeferredHeroVideo() {
     const playPromise = heroVideo.play();
     if (playPromise && typeof playPromise.catch === 'function') {
       playPromise.catch(() => {
-        // Em navegadores que bloqueiam autoplay, mantém apenas o poster.
+        // Em navegadores que bloqueiam autoplay, mantém o estado estático do container.
       });
     }
   };

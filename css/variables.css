@@ -28,23 +28,19 @@
   --font-size-xxl: 2.5rem;
 
   /* Pesos */
-  --font-light: 300;
   --font-regular: 400;
   --font-medium: 500;
   --font-semibold: 600;
-  --font-bold: 700;
 
   /* ===============================
      ESPAÇAMENTOS
   =============================== */
 
-  --space-xxs: 0.25rem;
   --space-xs: 0.5rem;
   --space-sm: 1rem;
   --space-md: 1.5rem;
   --space-lg: 2.5rem;
   --space-xl: 4rem;
-  --space-xxl: 6rem;
 
   /* ===============================
      LAYOUT
@@ -59,9 +55,7 @@
      TRANSIÇÕES
   =============================== */
 
-  --transition-fast: 0.2s ease;
   --transition-base: 0.3s ease;
-  --transition-slow: 0.5s ease;
 
   /* ===============================
      Z-INDEX
@@ -69,15 +63,5 @@
 
   --z-header: 100;
   --z-menu: 200;
-  --z-overlay: 300;
   --z-floating: 400;
-
-  /* ===============================
-     BREAKPOINTS
-  =============================== */
-
-  --bp-sm: 576px;
-  --bp-md: 768px;
-  --bp-lg: 1024px;
-  --bp-xl: 1280px;
 }

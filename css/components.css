@@ -104,11 +104,6 @@
   transition: all var(--transition-base);
 }
 
-.cliente-logo:hover {
-  opacity: 1;
-  filter: none;
-}
-
 /* ===============================
    DEPOIMENTOS
 ================================ */

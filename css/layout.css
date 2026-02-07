@@ -119,7 +119,7 @@
 }
 
 .cta-link:hover {
-  color: var(--color-white);
+  color: var(--color-black);
   background-color: var(--color-white);
 }
 

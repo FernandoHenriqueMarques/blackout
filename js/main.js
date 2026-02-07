@@ -158,7 +158,7 @@ const whatsappButton = document.querySelector('.whatsapp-float');
 
 if (whatsappButton) {
   whatsappButton.addEventListener('click', () => {
-    const phone = '5585999999999'; // atualizar número
+    const phone = '5585997113098';
     const message = encodeURIComponent('Olá, vim pelo site da Blackout.');
     const url = `https://wa.me/${phone}?text=${message}`;
 

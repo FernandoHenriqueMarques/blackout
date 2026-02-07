@@ -155,13 +155,47 @@ initInfiniteCarousel({
 // ===============================
 
 const whatsappButton = document.querySelector('.whatsapp-float');
+const whatsappModal = document.getElementById('whatsapp-modal');
 
-if (whatsappButton) {
+if (whatsappButton && whatsappModal) {
+  const closeTriggers = whatsappModal.querySelectorAll('[data-whatsapp-close]');
+  const storeLinks = whatsappModal.querySelectorAll('.whatsapp-store-link');
+  let lastFocusedElement = null;
+
+  function closeWhatsappModal() {
+    whatsappModal.hidden = true;
+    if (lastFocusedElement) {
+      lastFocusedElement.focus();
+    }
+  }
+
+  function openWhatsappModal() {
+    lastFocusedElement = document.activeElement;
+    whatsappModal.hidden = false;
+    if (storeLinks[0]) {
+      storeLinks[0].focus();
+    }
+  }
+
   whatsappButton.addEventListener('click', () => {
-    const phone = '5585997113098';
-    const message = encodeURIComponent('Olá, vim pelo site da Blackout.');
-    const url = `https://wa.me/${phone}?text=${message}`;
+    if (whatsappModal.hidden) {
+      openWhatsappModal();
+      return;
+    }
 
-    window.open(url, '_blank');
+    closeWhatsappModal();
+  });
+  closeTriggers.forEach((trigger) => {
+    trigger.addEventListener('click', closeWhatsappModal);
+  });
+
+  storeLinks.forEach((link) => {
+    link.addEventListener('click', closeWhatsappModal);
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !whatsappModal.hidden) {
+      closeWhatsappModal();
+    }
   });
 }

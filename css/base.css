@@ -154,6 +154,11 @@ section {
   padding-bottom: var(--space-lg);
 }
 
+section:not(#hero) {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 900px;
+}
+
 /* ===============================
    RESPONSIVO
 ================================ */

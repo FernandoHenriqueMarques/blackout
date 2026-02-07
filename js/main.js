@@ -14,7 +14,6 @@ function initDeferredHeroVideo() {
     return;
   }
 
-  const isMobileViewport = window.matchMedia('(max-width: 767px)').matches;
   const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
   const saveDataEnabled = Boolean(connection && connection.saveData);
   const isSlowConnection = Boolean(
@@ -23,7 +22,7 @@ function initDeferredHeroVideo() {
     /(^2g$|^slow-2g$|^3g$)/.test(connection.effectiveType)
   );
 
-  if (isMobileViewport || saveDataEnabled || isSlowConnection) {
+  if (saveDataEnabled || isSlowConnection) {
     return;
   }
 

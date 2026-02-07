@@ -12,12 +12,16 @@ function openMenu() {
   menu.style.display = 'flex';
   document.body.style.overflow = 'hidden';
   menuOpen = true;
+  menuToggle.setAttribute('aria-expanded', 'true');
+  menu.setAttribute('aria-hidden', 'false');
 }
 
 function closeMenu() {
   menu.style.display = 'none';
   document.body.style.overflow = '';
   menuOpen = false;
+  menuToggle.setAttribute('aria-expanded', 'false');
+  menu.setAttribute('aria-hidden', 'true');
 }
 
 // Toggle botão

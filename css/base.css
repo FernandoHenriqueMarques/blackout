@@ -101,6 +101,27 @@ a:hover {
 }
 
 /* ===============================
+   ACESSIBILIDADE
+================================ */
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(-120%);
+  background: var(--color-primary);
+  color: var(--color-black);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  z-index: var(--z-menu);
+  transition: transform var(--transition-base);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* ===============================
    IMAGENS & VÍDEOS
 ================================ */
 
@@ -174,7 +195,7 @@ section {
 }
 
 /* ===============================
-   ACESSIBILIDADE
+   ACESSIBILIDADE (FOCO)
 ================================ */
 
 button:focus,

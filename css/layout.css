@@ -180,6 +180,23 @@
   gap: var(--space-lg);
 }
 
+.sobre-texto {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.sobre-texto p {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+.sobre-imagem img {
+  width: 100%;
+  height: auto;
+}
+
 .lojas {
   display: flex;
   justify-content: center;
@@ -338,15 +355,24 @@
 
   .sobre-content {
     flex-direction: row;
-    align-items: center;
+    align-items: stretch;
+    gap: var(--space-xl);
   }
 
   .sobre-texto {
+    flex: 1;
     order: 1;
+    justify-content: center;
   }
 
   .sobre-imagem {
+    flex: 1;
     order: 2;
+  }
+
+  .sobre-texto p {
+    font-size: clamp(1.06rem, 0.35vw + 0.95rem, 1.18rem);
+    line-height: 1.7;
   }
 
   .footer-content {

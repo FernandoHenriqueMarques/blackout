@@ -5,11 +5,17 @@
 .menu-toggle {
   width: 36px;
   height: 36px;
-  display: inline-flex;
+  display: none;
   align-items: center;
   justify-content: center;
   font-size: 1.75rem;
   line-height: 1;
+}
+
+@media (max-width: 767px) {
+  .menu-toggle {
+    display: inline-flex;
+  }
 }
 
 /* ===============================
@@ -141,16 +147,6 @@
   white-space: normal;
   overflow-wrap: anywhere;
   word-break: break-word;
-}
-
-.depoimento p::before {
-  content: '"';
-  font-size: 3rem;
-  color: var(--color-primary);
-  position: absolute;
-  top: -10px;
-  left: -10px;
-  opacity: 0.3;
 }
 
 .depoimento-footer {

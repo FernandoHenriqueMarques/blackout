@@ -14,6 +14,19 @@ function initDeferredHeroVideo() {
     return;
   }
 
+  const isMobileViewport = window.matchMedia('(max-width: 767px)').matches;
+  const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  const saveDataEnabled = Boolean(connection && connection.saveData);
+  const isSlowConnection = Boolean(
+    connection &&
+    typeof connection.effectiveType === 'string' &&
+    /(^2g$|^slow-2g$|^3g$)/.test(connection.effectiveType)
+  );
+
+  if (isMobileViewport || saveDataEnabled || isSlowConnection) {
+    return;
+  }
+
   const loadAndPlayVideo = () => {
     source.src = source.dataset.src;
     source.removeAttribute('data-src');

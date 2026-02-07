@@ -265,6 +265,8 @@
 
   #hero {
     padding-top: 0;
+    min-height: auto;
+    padding-bottom: 0;
   }
   
   #hero .container {
